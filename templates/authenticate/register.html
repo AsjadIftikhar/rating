@@ -3,46 +3,86 @@
 {% block title %}Registration{% endblock %}
 
 {% block form %}
-
-    <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10">
-            <div class="wrap d-md-flex">
-                <div class="img" style="background-image: url('/static/images/backdrop.jpg')">
-                </div>
-                <div class="login-wrap p-4 p-md-5">
-                    <div class="d-flex">
-                        <div class="w-100">
-                            <h3 class="mb-4">Create account</h3>
-                        </div>
-                    </div>
+    <div class="card d-flex mt-5 wrap w-75" style="border: none">
+        <div class="row">
+            <div class="col-sm-5">
+                <img class="card-img w-100 h-100" src="{% static 'images/backdrop.jpg' %}" alt="backdrop">
+            </div>
+            <div class="col-sm-7">
+                <div class="card-body">
+                    <h3 class="heading font-class mb-5">Create account</h3>
                     <form method="POST" class="signin-form">
                         {% csrf_token %}
-                        <div class="form-group mb-3">
-                            <label class="label" for="name">Username</label>
+                        <div class="form-group mb-4">
+                            <label class="label-class font-class" for="name">Username</label>
                             {{ form.username }}
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="label" for="password">Password</label>
+                        <div class="form-group mb-4">
+                            <label class="label-class font-class" for="password">Password</label>
                             {{ form.password1 }}
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="label" for="password">Password Again</label>
+                        <div class="form-group mb-5">
+                            <label class="label-class font-class" for="password">Password Again</label>
                             {{ form.password2 }}
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <input type="submit" name="submit" id="submit"
-                                   class="form-control btn btn-primary rounded submit px-3 mt-3" value="Register"/>
+                                   class="button-class form-control btn btn-warning rounded submit font-class w-75"
+                                   value="Register"/>
                         </div>
                         <div style="color: red">{{ form.errors }}</div>
-                        <p class="loginhere">
-                            Have already an account ? <a href="{% url 'loginPage' %}" class="loginhere-link">Login
+                        <p class="forgot-class mb-4">
+                            Have already an account ? <a href="{% url 'loginPage' %}" class="forgot-class"
+                                                         style="color: #FBAB7E;">Login
                             here</a>
                         </p>
                     </form>
+
                 </div>
             </div>
         </div>
     </div>
+
+
+    {#    <div class="row justify-content-center">#}
+    {#        <div class="col-md-12 col-lg-10">#}
+    {#            <div class="wrap d-md-flex">#}
+    {#                <div class="img" style="background-image: url('/static/images/backdrop.jpg')">#}
+    {#                </div>#}
+    {#                <div class="login-wrap p-4 p-md-5">#}
+    {#                    <div class="d-flex">#}
+    {#                        <div class="w-100">#}
+    {#                            <h3 class="mb-4">Create account</h3>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <form method="POST" class="signin-form">#}
+    {#                        {% csrf_token %}#}
+    {#                        <div class="form-group mb-3">#}
+    {#                            <label class="label" for="name">Username</label>#}
+    {#                            {{ form.username }}#}
+    {#                        </div>#}
+    {#                        <div class="form-group mb-3">#}
+    {#                            <label class="label" for="password">Password</label>#}
+    {#                            {{ form.password1 }}#}
+    {#                        </div>#}
+    {#                        <div class="form-group mb-3">#}
+    {#                            <label class="label" for="password">Password Again</label>#}
+    {#                            {{ form.password2 }}#}
+    {#                        </div>#}
+    {#                        <div class="form-group">#}
+    {#                            <input type="submit" name="submit" id="submit"#}
+    {#                                   class="form-control btn btn-primary rounded submit px-3 mt-3" value="Register"/>#}
+    {#                        </div>#}
+    {#                        <div style="color: red">{{ form.errors }}</div>#}
+    {#                        <p class="loginhere">#}
+    {#                            Have already an account ? <a href="{% url 'loginPage' %}" class="loginhere-link">Login#}
+    {#                            here</a>#}
+    {#                        </p>#}
+    {#                    </form>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
 {% endblock %}
 
 {% block script %}
@@ -55,7 +95,7 @@
 
 
         for (var field in form_fields) {
-            form_fields[field].className += ' form-control'
+            form_fields[field].className += ' form-control w-75'
         }
     </script>
 
