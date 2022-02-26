@@ -1,12 +1,12 @@
 from django.urls import path
-from authenticate.views import registerPage, loginPage, PageNotFound, audible_login
+from authenticate.views import register_page, login_page, page_not_found, audible_login
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', loginPage, name='loginPage'),
-    path('register/', registerPage, name='registerPage'),
-    path('login/', loginPage, name='loginPage'),
-    path('404/', PageNotFound, name="404"),
+    path('', login_page, name='loginPage'),
+    path('register/', register_page, name='registerPage'),
+    path('login/', login_page, name='loginPage'),
+    path('404/', page_not_found, name="404"),
     path('audible-login/', audible_login, name='audible_login'),
 ]
 
