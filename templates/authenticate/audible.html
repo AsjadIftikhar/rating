@@ -10,7 +10,7 @@
     <nav class="navbar navbar-expand-lg navbar-light"
          style="background-color: #8BC6EC; background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" alt="" width="60" height="60">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav me-5 mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="forgot-class me-5" aria-current="page" href="#">Home</a>
+                        <a class="forgot-class me-5" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="forgot-class me-5" aria-current="page" href="#">History</a>
