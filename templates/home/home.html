@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-<div>Home</div>
-</body>
-</html>
+{% extends "home/home_base.html" %}
+{% load static %}
+{% block title %}Home Page{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8BC6EC; background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/logo.png' %}" alt="" width="60" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="forgot-class me-5" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="forgot-class me-5" aria-current="page" href="#">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="forgot-class" aria-current="page" href="#">All Books</a>
+                    </li>
+                </ul>
+                <button class="button-class btn btn-light" type="submit">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <button>Link Audible</button>
+{% endblock %}

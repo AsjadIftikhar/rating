@@ -29,7 +29,6 @@ def loginPage(request):
 
         if user:
             login(request, user)
-            print("TRUE")
             return redirect('/home/')
         else:
             messages.info(request, 'Username OR password Incorrect')
