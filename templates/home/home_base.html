@@ -37,7 +37,7 @@
             background-image: linear-gradient(62deg, #FBAB7E 1%, #F7CE68 100%);
             opacity: 90%;
             color: white;
-            border-radius: 90px;
+            border-radius: 10px;
         }
 
         .forgot-class {
@@ -46,9 +46,32 @@
 
         }
 
+        .yellow-class {
+            color: #FBAB7E;
+            font-weight: bold;
+        }
+
         a:hover {
             color: #FBAB7E;
         }
+
+        .line-class {
+            border-top: 1px solid rgba(107, 103, 103, 0.41);
+        }
+
+        .line-text {
+            width: 50%;
+            text-align: center;
+            border-bottom: 1px solid rgba(72, 71, 71, 0.15);
+            line-height: 0.1em;
+            margin: 10px 0 20px;
+        }
+
+        .line-text span {
+            background: #fff;
+            padding: 0 10px;
+        }
+
     </style>
 
 </head>
@@ -62,17 +85,19 @@
         <h2 class="mt-5 mb-3 blog-heading">Book Rating Generator</h2>
     {% endblock %}
 
-    <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                     class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"></path>
-                </svg>
-            </li>
-            <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>
-        </ol>
-    </nav>
+    {% block BREADCRUMB %}
+        <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                         class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"></path>
+                    </svg>
+                </li>
+                <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>
+            </ol>
+        </nav>
+    {% endblock %}
     <div>
         {% block content %}
         {% endblock %}

@@ -10,7 +10,7 @@
     <nav class="navbar navbar-expand-lg navbar-light"
          style="background-color: #8BC6EC; background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" alt="" width="60" height="60">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -21,13 +21,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav me-5 mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="forgot-class me-5" aria-current="page" href="#">Home</a>
+                        <a class="forgot-class me-5" style="font-weight: bold" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="forgot-class me-5" aria-current="page" href="#">History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="forgot-class" aria-current="page" href="#">All Books</a>
+                        <a class="forgot-class" aria-current="page" href="#">Library</a>
                     </li>
                 </ul>
                 <button class="button-class btn btn-light" type="submit">
@@ -35,6 +35,21 @@
                 </button>
             </div>
         </div>
+    </nav>
+{% endblock %}
+
+{% block BREADCRUMB %}
+    <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                     class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"></path>
+                </svg>
+            </li>
+            <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>
+            <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Audible</li>
+        </ol>
     </nav>
 {% endblock %}
 
@@ -50,19 +65,20 @@
                     <form method="POST" class="signin-form">
                         {% csrf_token %}
                         <div class="form-group mb-4">
-                            <label class="label-class font-class" for="name">Email Address</label>
-                            <input type="text" class="form-control w-75" name="name" id="name"
+                            <label class="label-class font-class" for="email">Email Address</label>
+                            <input type="text" class="form-control w-75" name="Email"
                                    placeholder="Your Audible Email Address"
                                    required>
                         </div>
                         <div class="form-group mb-4">
                             <label class="label-class font-class" for="password">Password</label>
-                            <input type="password" class="form-control w-75" name="password" id="password"
+                            <input type="password" class="form-control w-75" name="Password"
                                    placeholder="Audible Password" required>
                         </div>
                         <div class="form-group mb-5">
                             <select class="custom-select mr-sm-2 border-secondary bg-light shadow-lg"
-                                    style="border-radius: 5px">
+                                    style="border-radius: 5px"
+                                    name="Locale">
                                 <option selected>Choose...</option>
                                 <option value="us">us</option>
                                 <option value="ca">ca</option>
