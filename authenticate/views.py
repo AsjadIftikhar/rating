@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from authenticate.api import AudibleApi
 
 
 # Sign Up Page Controller:
@@ -47,8 +48,14 @@ def audible_login(request):
 
         print(email, password, locale)
 
-    context = {}
-    return render(request, 'authenticate/audible.html', context)
+        # api = AudibleApi(email, password, locale)
+
+        context = {}
+        return render(request, 'authenticate/audible.html', context)
+    else:
+
+        context = {}
+        return render(request, 'authenticate/audible.html', context)
 
 
 def page_not_found(request):
