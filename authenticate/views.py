@@ -41,6 +41,12 @@ def login_page(request):
 
 # Login Page Controller
 def audible_login(request):
+    def callback(captcha_url):
+        print(captcha_url)
+
+        # context = {}
+        return redirect('home')
+
     if request.method == 'POST':
         email = request.POST.get('Email')
         password = request.POST.get('Password')
@@ -48,7 +54,12 @@ def audible_login(request):
 
         print(email, password, locale)
 
-        # api = AudibleApi(email, password, locale)
+        print(request.COOKIES)
+
+        api = AudibleApi(email, password, locale, callback)
+        client = api.get_client()
+        library = api.get_library()
+        api.de_register()
 
         context = {}
         return render(request, 'authenticate/audible.html', context)
