@@ -1,3 +1,4 @@
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from authenticate.decorators import authenticated_user
 from django.contrib.auth import logout
@@ -11,6 +12,12 @@ def home(request):
         # here you get the files needed
         file = request.FILES['sentFile']
         print(file)
+
+        # fs = FileSystemStorage()
+        # if file:
+        #     for f in file:
+        #         fs.save(f.name, f)
+
         file_content = pdf_to_string(file)
 
         print(file_content)

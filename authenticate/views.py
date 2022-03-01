@@ -41,32 +41,24 @@ def login_page(request):
 
 # Login Page Controller
 def audible_login(request):
-    def callback(captcha_url):
-        print(captcha_url)
+    # if request.method == 'POST':
+    # email = request.POST.get('Email')
+    # password = request.POST.get('Password')
+    # locale = request.POST.get('Locale')
+    #
+    # print(email, password, locale)
 
-        # context = {}
-        return redirect('home')
+    api = AudibleApi()
+    client = api.get_client()
+    library = api.get_library()
+    api.de_register()
 
-    if request.method == 'POST':
-        email = request.POST.get('Email')
-        password = request.POST.get('Password')
-        locale = request.POST.get('Locale')
-
-        print(email, password, locale)
-
-        print(request.COOKIES)
-
-        api = AudibleApi(email, password, locale, callback)
-        client = api.get_client()
-        library = api.get_library()
-        api.de_register()
-
-        context = {}
-        return render(request, 'authenticate/audible.html', context)
-    else:
-
-        context = {}
-        return render(request, 'authenticate/audible.html', context)
+    context = {'library': library}
+    return render(request, 'authenticate/audible.html', context)
+    # else:
+    #
+    #     context = {}
+    #     return render(request, 'authenticate/audible.html', context)
 
 
 def page_not_found(request):
