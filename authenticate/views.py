@@ -53,7 +53,7 @@ def audible_login(request):
     library = api.get_library()
     api.de_register()
 
-    context = {'library': library}
+    context = {'library': library['items']}
     return render(request, 'authenticate/audible.html', context)
     # else:
     #
