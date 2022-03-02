@@ -21,7 +21,8 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav me-5 mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="forgot-class me-5" style="font-weight: bold" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a class="forgot-class me-5" style="font-weight: bold" aria-current="page"
+                           href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="forgot-class me-5" aria-current="page" href="#">History</a>
@@ -54,60 +55,64 @@
 {% endblock %}
 
 {% block content %}
-{#    <div class="card d-flex mt-5 wrap shadow-lg w-75" style="border: none">#}
-{#        <div class="row">#}
-{#            <div class="col-sm-6 col-lg-7">#}
-{#                <img class="card-img w-100 h-100" src="{% static 'images/audible.png' %}" alt="backdrop">#}
-{#            </div>#}
-{#            <div class="col-sm-6 col-lg-5">#}
-{#                <div class="card-body">#}
-{#                    <h3 class="heading font-class mb-5 mt-3">Audible Account</h3>#}
-{#                    <form method="POST" class="signin-form">#}
-{#                        {% csrf_token %}#}
-{#                        <div class="form-group mb-4">#}
-{#                            <label class="label-class font-class" for="email">Email Address</label>#}
-{#                            <input type="text" class="form-control w-75" name="Email"#}
-{#                                   placeholder="Your Audible Email Address"#}
-{#                                   required>#}
-{#                        </div>#}
-{#                        <div class="form-group mb-4">#}
-{#                            <label class="label-class font-class" for="password">Password</label>#}
-{#                            <input type="password" class="form-control w-75" name="Password"#}
-{#                                   placeholder="Audible Password" required>#}
-{#                        </div>#}
-{#                        <div class="form-group mb-5">#}
-{#                            <select class="custom-select mr-sm-2 border-secondary bg-light shadow-lg"#}
-{#                                    style="border-radius: 5px"#}
-{#                                    name="Locale">#}
-{#                                <option selected>Choose...</option>#}
-{#                                <option value="us">us</option>#}
-{#                                <option value="ca">ca</option>#}
-{#                                <option value="uk">uk</option>#}
-{#                                <option value="au">au</option>#}
-{#                                <option value="fr">fr</option>#}
-{#                                <option value="de">de</option>#}
-{#                                <option value="jp">jp</option>#}
-{#                                <option value="it">it</option>#}
-{#                                <option value="in">in</option>#}
-{#                                <option value="es">es</option>#}
-{#                            </select>#}
-{#                        </div>#}
-{##}
-{#                        <div class="form-group mb-4">#}
-{#                            <button type="submit"#}
-{#                                    class="button-class form-control btn btn-warning rounded submit font-class w-75 shadow-lg">#}
-{#                                Link#}
-{#                            </button>#}
-{#                        </div>#}
-{#                        {% for message in messages %}#}
-{#                            <p style="color: red">{{ message }}</p>#}
-{#                        {% endfor %}#}
-{#                    </form>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
+    {#    <div class="card d-flex mt-5 wrap shadow-lg w-75" style="border: none">#}
+    {#        <div class="row">#}
+    {#            <div class="col-sm-6 col-lg-7">#}
+    {#                <img class="card-img w-100 h-100" src="{% static 'images/audible.png' %}" alt="backdrop">#}
+    {#            </div>#}
+    {#            <div class="col-sm-6 col-lg-5">#}
+    {#                <div class="card-body">#}
+    {#                    <h3 class="heading font-class mb-5 mt-3">Audible Account</h3>#}
+    {#                    <form method="POST" class="signin-form">#}
+    {#                        {% csrf_token %}#}
+    {#                        <div class="form-group mb-4">#}
+    {#                            <label class="label-class font-class" for="email">Email Address</label>#}
+    {#                            <input type="text" class="form-control w-75" name="Email"#}
+    {#                                   placeholder="Your Audible Email Address"#}
+    {#                                   required>#}
+    {#                        </div>#}
+    {#                        <div class="form-group mb-4">#}
+    {#                            <label class="label-class font-class" for="password">Password</label>#}
+    {#                            <input type="password" class="form-control w-75" name="Password"#}
+    {#                                   placeholder="Audible Password" required>#}
+    {#                        </div>#}
+    {#                        <div class="form-group mb-5">#}
+    {#                            <select class="custom-select mr-sm-2 border-secondary bg-light shadow-lg"#}
+    {#                                    style="border-radius: 5px"#}
+    {#                                    name="Locale">#}
+    {#                                <option selected>Choose...</option>#}
+    {#                                <option value="us">us</option>#}
+    {#                                <option value="ca">ca</option>#}
+    {#                                <option value="uk">uk</option>#}
+    {#                                <option value="au">au</option>#}
+    {#                                <option value="fr">fr</option>#}
+    {#                                <option value="de">de</option>#}
+    {#                                <option value="jp">jp</option>#}
+    {#                                <option value="it">it</option>#}
+    {#                                <option value="in">in</option>#}
+    {#                                <option value="es">es</option>#}
+    {#                            </select>#}
+    {#                        </div>#}
+    {##}
+    {#                        <div class="form-group mb-4">#}
+    {#                            <button type="submit"#}
+    {#                                    class="button-class form-control btn btn-warning rounded submit font-class w-75 shadow-lg">#}
+    {#                                Link#}
+    {#                            </button>#}
+    {#                        </div>#}
+    {#                        {% for message in messages %}#}
+    {#                            <p style="color: red">{{ message }}</p>#}
+    {#                        {% endfor %}#}
+    {#                    </form>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
     <div>
-        {{ library }}
+        {% for lib in library %}
+            <div class="m-1">{{ lib.title }}</div>
+
+        {% endfor %}
+
     </div>
 {% endblock %}
