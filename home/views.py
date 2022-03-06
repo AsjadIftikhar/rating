@@ -2,30 +2,45 @@ from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from authenticate.decorators import authenticated_user
 from django.contrib.auth import logout
+import PyPDF2
+import io
+
+from .forms import BookForm
 from .helpers import *
 
 
 # Login Page Controller
 @authenticated_user
 def home(request):
+    words = []
+    percentage = 0.0
     if request.method == 'POST':
-        # here you get the files needed
-        file = request.FILES['sentFile']
-        print(file)
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['pdf'].read()
+            file = PyPDF2.PdfFileReader(io.BytesIO(file))
+            content = ""
+            for i in range(file.numPages):
+                text = file.getPage(i)
+                content += text.extractText()
 
-        # fs = FileSystemStorage()
-        # if file:
-        #     for f in file:
-        #         fs.save(f.name, f)
+            print(content)
+            words = remove_stopwords(content)
+            percentage = probability(words)
+            form.save()
+        else:
+            print("Invalid Form")
+            print(form.errors)
 
-        file_content = pdf_to_string(file)
-
-        print(file_content)
-
-        context = {'user': request.user}
-        return render(request, 'home/home.html', context)
+        context = {'user': request.user,
+                   'form': form,
+                   'total_words': len(words),
+                   'percentage': percentage}
+        return render(request, 'home/book.html', context)
     else:
-        context = {'user': request.user}
+        form = BookForm()
+        context = {'user': request.user,
+                   'form': form}
         return render(request, 'home/home.html', context)
 
 
@@ -33,4 +48,3 @@ def home(request):
 def log_out(request):
     logout(request)
     return redirect('/login')
-

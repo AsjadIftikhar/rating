@@ -1,0 +1,14 @@
+{% extends "home/home.html" %}
+{% load static %}
+{% block title %}Book{% endblock %}
+
+{% block content %}
+    <div>Total Unique Words in Book: {{ total_words }}</div>
+    <div>Percentage of Profane Words in Book: {{ percentage }}</div>
+    {% if percentage > 1.0 %}
+        <div>R rated</div>
+    {% else %}
+        <div>PG-13</div>
+    {% endif %}
+
+{% endblock %}
