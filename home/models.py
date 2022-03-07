@@ -1,3 +1,7 @@
 from django.db import models
+from isbn_field import ISBNField
 
-# Create your models here.
+
+class Book(models.Model):
+    # isbn = ISBNField()
+    pdf = models.FileField()

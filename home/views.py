@@ -1,23 +1,58 @@
 from django.core.files.storage import default_storage
 from django.shortcuts import render
 from .helperFunctions import *
+from django.core.files.storage import FileSystemStorage
+from django.shortcuts import render, redirect
+from authenticate.decorators import authenticated_user
+from django.contrib.auth import logout
+import PyPDF2
+import io
+
+from .forms import BookForm
+from .helpers import *
+
 
 # Login Page Controller
+@authenticated_user
 def home(request):
     context = {}
     return render(request, 'home/home.html', context)
 
 # Upload Files
 def uploadFiles(request):
+    words = []
+    percentage = 0.0
     if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['pdf'].read()
+            file = PyPDF2.PdfFileReader(io.BytesIO(file))
+            content = ""
+            for i in range(file.numPages):
+                text = file.getPage(i)
+                content += text.extractText()
 
-        # here you get the files needed
-        file = request.FILES['sentFile']
-        fileContent = pdfToString(file)
+            print(content)
+            words = remove_stopwords(content)
+            percentage = probability(words)
+            form.save()
+        else:
+            print("Invalid Form")
+            print(form.errors)
 
-        print(fileContent)
+        context = {'user': request.user,
+                   'form': form,
+                   'total_words': len(words),
+                   'percentage': percentage}
+        return render(request, 'home/book.html', context)
+    else:
+        form = BookForm()
+        context = {'user': request.user,
+                   'form': form}
+        return render(request, 'home/home.html', context)
 
 
-    context = {}
-    return render(request, 'home/upload_files.html', context)
-
+@authenticated_user
+def log_out(request):
+    logout(request)
+    return redirect('/login')
