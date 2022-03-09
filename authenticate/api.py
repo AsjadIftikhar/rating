@@ -21,12 +21,10 @@ def custom_external_callback(captcha_url):
 
 class AudibleApi:
     def __init__(self):
-        # self.auth = audible.Authenticator.from_login(email, password, locale=locale, with_username=False,
-        #                                              # captcha_callback=view_func,
-        #                                              )
         self.auth = audible.Authenticator.from_login_external(locale="us", with_username=False,
                                                               login_url_callback=custom_external_callback,
                                                               )
+        self.auth.to_file("cred.txt")
 
     def get_client(self):
         return audible.Client(auth=self.auth)

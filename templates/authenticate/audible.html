@@ -24,17 +24,14 @@
 {% block content %}
 
     <div>
-        <ul class="list-group list-group-numbered">
+        <ul class="list-group list-group-number">
             {% for lib in library %}
                 <li class="list-group-item">
-                    <button class="btn btn-dark" type="submit">Check Rating</button>
+                    <a href="{% url 'audible_login' asin=lib.asin %}" class="btn btn-dark">Check Rating</a>
                     {{ lib.title }}
                 </li>
             {% endfor %}
-
-
         </ul>
-
 
     </div>
 {% endblock %}

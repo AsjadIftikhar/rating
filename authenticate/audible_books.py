@@ -38,7 +38,7 @@ def download_file(url, filename):
     return filename
 
 
-def download_book(client, asin):
+def download_book(auth, client, asin):
     # auth = audible.Authenticator.from_file("cred.txt")
     # client = audible.Client(auth)
 

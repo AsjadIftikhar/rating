@@ -1,0 +1,31 @@
+{
+    "website_cookies": {
+        "session-id": "144-6179700-7390563",
+        "ubid-main": "134-9357314-5288054",
+        "x-main": "?QWdbbO71rMraljAG0QQjcHe5C85ah1qDGcAnf5WVLc1iBjYB4?XrTDFjbKq?OzQ",
+        "at-main": "Atza|IwEBIOeVZZ2O53lWqcC9PEhZCkfWqspuaGlcTQFdZjGG4Qvyj9i3RORj25asP5pdLk-Cjak9vXsDuDmvz_7TJk45dQY5JeTa1b_M3pjbkQoZOtnGhJAcM4A1x4tPr9jekWT5sTjPu2eRFHvBMzH7c_2w0S7PwQidDLPtKiPK4G0vtHuyyU71M0-Mb3ynXrFZATMTKnNylNPjTpzS81i7U16YdBVQRZOf0V614VP9y_Y-LuAjTSr3svoowWXY7cmKNMVHbPkLcKbu0K7Pi5ntwBUbzYPaFMbd0htotyNnmHTDNFS33xDyUbm3BpSB23yvWQmLqsQ",
+        "sess-at-main": "rtRUd5sGuHfeCA4oQDNCLrraYLG+KsXS4MxjL5MhAhA="
+    },
+    "adp_token": "{enc:qGtiXkCK2H13tvx9MH1EyXk9pr/XAXlFccTUvlwqpjJwPjTJF72Cvd0LZEsOTgF9D5q5Yljy5HP//Zzg9ARNASESxWBnic3cCpdL2/hHx6BjrAQkbhTXF5ZoHGTjXgc7hPbbO87HD6xkfYMz0zdlop1Rf4mYTPXdESVtTBgzr0lo5Ppfb1FY3KxbdSnq2Z52aXAuztTTx2WhjZu2EFk719M5G9yuyfKQt2YLrNQW57K0a2iJjoMRGTV8rFrNCxEeWCJZJsXB034D2G+I3uEYM6iTudWq5i6MtM1ZgbYxkHQrZStufE0VQp1ezWjwLDEcTjVCI2qI5K8LsjpYlP+VbdcIg+uEap2lKXtfw3r3VDzGZ1NBwU13DENXQYI6GcIEL2VFV6bA18np/H+Iyy0ksNDpKFshoJkwqOOYtc8NzpkxuqIPp/7x95sgTccYwroJf5ScwIs8K47s5sdf7/0umLZEb/+w8JxmW+PcZbNfLiGhDqgji+0H3CmTOSSq6j3TZxYcPRbodTAIGScDasp+tXs/yIaqVPhK4DI2v1dlydAA0eb5983FjCxEhax7OVOYOHLsB1c9xLw7Gbz5eVE9AvzzTKcJfkqp6OMbuDsCQbuzyMveT7XTGCuqsnNVYaUPTQlKnP8Zwt/0Z2zf+IQ9a85qwmKIbuw9Z3B/KlNrHbtambjCTnWJuDJUu0tAHigJVyuxkah+y2YABf/JXu4z3V+hJPbRdL7ngOBJkdK1N7cRXoLb4Wo8FF0AAg/gIhZWWNWdawftIG5k4ewUi6zfuuOo4VxhWarslFa9oBUVdNfq7cHL8mGDOgReITbZ6e14+pX4xWHVPJsxExT29qRWxkEFetNbm9FzBfalXHYSVFfkzi1g0xG/atR+2SkSOdhGw+I9BHnc7NsE6oanO9VQbwzQEEe6ZRo57eSPA5S3p4rL29ega2NZc520oltoqTLCt9mrJWYBdcOhdJSNXCMmsXplX01RCfG/KauIHjeouvfInFD7HDAYMGU5S4Kb/pPekaGlCVbc15AgoMFvFvDI/W97WSiAbj6fCSx6N50N/6k=}{key:RWpHLTcvm7huszFPz3rAqa0ZZxOIGbFIBxnVB1/AkYLgGkS8+GrBQ/fdRS8YlpJhLn/LR62igA70A1+FFwWTBeq0k1JBZoRIT8w4AGPOLd3o3ndx8gHiXOZBo7nQWACH3cg6szNa1aLUMEZKpZNc+BbsXhKqS+BCjml5TJBFDhwdaCt44FFgMQXYpEwfPAqrItmNnSwk+XRyXK04bg1iwU0TAEVOlX2GuRt8+NjEVptmi1gIhl8yBBw3XNjZCBbMrdDqOj1MjzL9KnfkW+lqk8B3BjIWp40lJZOnAVVWCtcir3jiJC7bQq6ypKObfvca4cwKUPIQpzJiANNcYnz3PA==}{iv:79xfEjrNahuf3nJOIdfmSw==}{name:QURQVG9rZW5FbmNyeXB0aW9uS2V5}{serial:Mg==}",
+    "access_token": "Atna|EwICIHSm5PSbxfxLuFWuvvm5M30juYE8hWROwGWeAP-yljy9qDuetdGKJ7Mb7bF-8IPejMK7bTfYTC3rezuOYcXXgRG93mi1Wf5THGWB705fnbWa02TsR7Qvq6NXaiHJ4FoPdU_vavdHUzvk1hLyTUn0x1dAhTw0lIbbAFdi75ZWknnrGmQmOMkKqOnfAeT3NG5_-U3Mamx3YlmVcxRYzh1qFLcGwppDOJ1xmFCupvH5RzQBRgxaU0JuL2h1DEUj_XkQpLpWxE3mx3GV7MLFCO4sZv4a",
+    "refresh_token": "Atnr|EwICIEhSwk-RppUETQLGCnIi7BZ1SANrOIZ0fuub9Ij5X5UBj_CPWOoY2Vn0xhGazRU1-ACgmrqWb2QytJTTkspv7TWnBCv-9VuXloQcIXcbWss5hg7PTNT_QbipfZFsfrRgokq3JlMp_KXhlhFUVpA4LTp5UOPtyU4ckosDOVw4My8OZ8OeGqr1oCSqATU5fMlxP8FKpxvjHbWFzJDf7crrppQv98MixcA9VaqkDXfLIhmANJnOTUVdJ7CPjcaXdSecQttWe22-YfKQvWpwwh6SD18MmOpYvFecjZBVGNb7iP3UFKAYvT6ycwPFBleropa0wZj2ZoiyUB2BU4t0Ccn9Dt0D",
+    "device_private_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEApf+D4Mqz0G8j4cuw1frIh2TXZ4PFdXEquBcMR4eJXrbPm9TR\ny+f3tNnk3+hIIWmijin3Z0nHYkWlLDeGdwOM+wAljmfE+8FTt/cuov2wEnDxuQkC\nOnZYVsd72eEPaYNZ2IXkI+bEMYj1cIVacZD6gQ/uG5cZ0WyG6jBs2R1n4TwF/N/e\nVtDjQUQEgYFQyZ/9w1c9qGkFA/Vnqug6CcCI/BlrNEPda9kxtlXdclztuTVTcsVL\nGa4LHiyUsh/fjLSuz470LBeroET4hY2PxNFkk/3B6HiQy1IXh6jjLuY/AjQv1cID\nxkRL4szA8xTlv7CV32W3twnT+eXZvF/B0QnEtwIDAQABAoIBAAZbiON9H/Hlr8wg\nDv/DARceZ5mRVGixEt/GEjRTHpHAEqd3OSnEEpqclcV1kf2lnBIxzUXpb3d2D2No\nJQA95JJgaQ/RLZwuxVQQZXrcmHe8V6WskKdIjQ2VykqH8h0qaLCAQEKXvf/frPbI\nRLSAxvdWctofqV959pjVjfWqyKW5pPxbT442UynXZfu1pr8HBSmJ1N2EROJ8Nk70\nhofSn7FdOnGiCyHD0MUUs9Xv7qO/1M1HmoJ8LDC/KOJ3MCD0ndI5TQ3r1906mscI\n9/aoS82ONI1RmuJZc62K4TwThWXEWWyC8L7g2bMB68DRz4eBCiL1q98XrNHcUZSX\ne8yXAtECgYEA1UkhM7FdBynQ/irGLEpQUrBEzv8qLOfi3Bv/gsQlu7Z3Dn83v0nC\n7UGEXVEne6K7NY30UiEzmvIpcMqbN1zSlBxso4UEZCkJoj0zJqprY9WxSxhU6Uvy\nHfpmW+iukQaq6JQDCn0KuMvOrLUzKCa0+xjk3MRXoi0r6RbhnYsv3c0CgYEAxz4E\nB7YxBEJuwkyRr/QDkBd1Usgip0fRMHZYjTc1RGZhuAEVbEdRxrXxbrnQAbmdwfzY\nVmLja8tj3cWmQPTbFvE8FzVdWOYmu+dIW62mAcdF7PfmcDj3VATxDzvw82jlxAHc\noJJK2rPlHYyqBHMwEK2jCjHF/WxUabha0AUbCJMCgYEAx2pPk8BiJV9wmyOtFB4L\nSbSrMQqcCU5p6rh2xnHUgdSRLkm9+qjhiuj19DX7f3pgJStrYxrN4DJIkr+sLjAo\nZvjIjn7A41EHQ9yKpb0zGS3kTT0bruEmJ+dFqus7xDcCtuAkk7rjunI783ibsw+1\nqQvWd59P/D7VzmJpYd6QS4UCgYAPDgiP7JxXjg2AcPixKub6BEvBLY4wxaRw3QBj\n60ADIxlPJgXQYLM1KJpNm4y0FKpu9gQCwwYcJwosv7qIPfgwC5pWxpl/FiTnHdrB\n0qUwjTYjabfn0uYdWyI73HOgcNSrsthQ6bzuOZmeWfqey3VeTUB8jLZBJ+ZY9q0l\n+rzIMQKBgGS52WZ0VU505VFJheNM5wnEuHwfeJxpJojq5KrnRJmtuI+b26TN8hIH\nX7IP7L5Q3A53W4AIF4c/xJeDyEQ3fR/jGctBi04GigRlG61BPfr8kK/7GWdjFaDT\nQCgoMrmoKylO/oswB04kj1D5WMZ/2wmXgrSCbIo832KeMGhL8GAn\n-----END RSA PRIVATE KEY-----\n",
+    "store_authentication_cookie": {
+        "cookie": "fVdNpJTahTx1HlKEIm6rTHRFCCb38nsNTmEwKblmrgsGR7J43NEZW+wIsl++UazXx0BttQtH3QJYdfKgXQPJkdExbMoOaGTHbsTiBqLUmVU870Ms2a2Dar01uNK4pGRk0hNy16VcswsHUAkq0BsrRqp5FHUCiCZ6d5QpSoyivKFKenIN2KcuaQ=="
+    },
+    "device_info": {
+        "device_name": "Ali's 8th Audible for iPhone",
+        "device_serial_number": "97E11BF352D9460E9E9DAE44AAD055D1",
+        "device_type": "A2CZJZGLK2JJVM"
+    },
+    "customer_info": {
+        "account_pool": "Amazon",
+        "user_id": "amzn1.account.AE22DOUXPKNUT5DTJYREB2CLK6FA",
+        "home_region": "NA",
+        "name": "Ali Iqbal",
+        "given_name": "Ali"
+    },
+    "expires": 1646814586.055132,
+    "locale_code": "us",
+    "activation_bytes": null
+}
