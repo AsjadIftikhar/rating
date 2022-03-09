@@ -27,7 +27,7 @@ def home(request):
             print(content)
             words = remove_stopwords(content)
             percentage = probability(words)
-            form.save()
+            # form.save()
         else:
             print("Invalid Form")
             print(form.errors)
