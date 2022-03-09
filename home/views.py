@@ -27,7 +27,7 @@ def home(request):
             print(content)
             words = remove_stopwords(content)
             percentage = probability(words)
-            form.save()
+            # form.save()
         else:
             print("Invalid Form")
             print(form.errors)
@@ -35,7 +35,7 @@ def home(request):
         context = {'user': request.user,
                    'form': form,
                    'total_words': len(words),
-                   'percentage': percentage}
+                   'percentage': float("{:.2f}".format(percentage))}
         return render(request, 'home/book.html', context)
     else:
         form = BookForm()
