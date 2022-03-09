@@ -5,6 +5,7 @@ from django.contrib import messages
 from authenticate.api import AudibleApi
 from authenticate.audible_books import *
 from authenticate.speech_text import *
+from home.helpers import *
 
 
 # Sign Up Page Controller:
@@ -49,7 +50,13 @@ def audible_login(request, asin=""):
         # download_book(auth=auth, client=client, asin=asin)
         book_text = speech_to_text()
 
-        return render(request, 'authenticate/audible.html', {})
+        words = remove_stopwords(book_text)
+        percentage = probability(words)
+
+        context = {'user': request.user,
+                   'total_words': len(words),
+                   'percentage': float("{:.2f}".format(percentage))}
+        return render(request, 'home/book.html', context)
     else:
         api = AudibleApi()
         client = api.get_client()
