@@ -22,11 +22,19 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        {% for lib in library %}
-            <div class="m-1">{{ lib.title }}</div>
 
-        {% endfor %}
+    <div>
+        <ul class="list-group list-group-numbered">
+            {% for lib in library %}
+                <li class="list-group-item">
+                    <button class="btn btn-dark" type="submit">Check Rating</button>
+                    {{ lib.title }}
+                </li>
+            {% endfor %}
+
+
+        </ul>
+
 
     </div>
 {% endblock %}
