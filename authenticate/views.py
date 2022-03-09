@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from authenticate.api import AudibleApi
+from audible_books import *
+from speech_text import *
 
 
 # Sign Up Page Controller:
@@ -47,14 +49,25 @@ def audible_login(request):
     # locale = request.POST.get('Locale')
     #
     # print(email, password, locale)
-
     api = AudibleApi()
     client = api.get_client()
     library = api.get_library()
     api.de_register()
 
-    context = {'library': library['items']}
-    return render(request, 'authenticate/audible.html', context)
+    if request.method == 'POST':
+        download_book(client, asin)
+        book_text = speech_to_text()
+
+        return render(request, 'authenticate/audible.html', context)
+
+    if request.method == 'GET':
+        # api = AudibleApi()
+        # client = api.get_client()
+        # library = api.get_library()
+        # api.de_register()
+
+        context = {'library': library['items']}
+        return render(request, 'authenticate/audible.html', context)
     # else:
     #
     #     context = {}
