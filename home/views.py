@@ -1,7 +1,10 @@
+import traceback
+
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from authenticate.decorators import authenticated_user
 from django.contrib.auth import logout
+from django.contrib import messages
 import PyPDF2
 import io
 
@@ -17,20 +20,21 @@ def home(request):
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
-            file = request.FILES['pdf'].read()
-            file = PyPDF2.PdfFileReader(io.BytesIO(file))
-            content = ""
-            for i in range(file.numPages):
-                text = file.getPage(i)
-                content += text.extractText()
 
-            print(content)
-            words = remove_stopwords(content)
-            percentage = probability(words)
-            # form.save()
-        else:
-            print("Invalid Form")
-            print(form.errors)
+            try:
+                file = request.FILES['pdf'].read()
+                file = PyPDF2.PdfFileReader(io.BytesIO(file))
+                content = ""
+                for i in range(file.numPages):
+                    text = file.getPage(i)
+                    content += text.extractText()
+
+                words = remove_stopwords(content)
+                percentage = probability(words)
+                messages.info(request, "Successful")
+                # form.save()
+            except Exception as ex:
+                messages.info(request, traceback.format_exc())
 
         context = {'user': request.user,
                    'form': form,

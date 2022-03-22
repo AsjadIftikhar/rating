@@ -11,6 +11,12 @@
             <div class="col-sm-7">
                 <div class="card-body">
                     <h3 class="heading font-class mb-5">Create account</h3>
+                    {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ form.errors }}
+                        </div>
+                    {% endif %}
+
                     <form method="POST" class="signin-form">
                         {% csrf_token %}
                         <div class="form-group mb-4">
@@ -30,7 +36,6 @@
                                    class="button-class form-control btn btn-warning rounded submit font-class w-75"
                                    value="Register"/>
                         </div>
-                        <div style="color: red">{{ form.errors }}</div>
                         <p class="forgot-class mb-4">
                             Have already an account ? <a href="{% url 'loginPage' %}" class="forgot-class"
                                                          style="color: #FBAB7E;">Login

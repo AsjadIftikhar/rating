@@ -36,6 +36,16 @@
 {% endblock %}
 
 {% block content %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% if form.errors %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ form.errors }}
+        </div>
+    {% endif %}
     <div class="jumbotron jumbotron-fluid mt-4">
         <div class="container">
             <h1 class="display-4 mb-5">Welcome Back <span class="yellow-class">{{ user }}</span></h1>
@@ -57,8 +67,6 @@
                 <div class="card-header bg-dark text-white form-label">Upload a pdf book</div>
                 <div class="card-body mb-3">
                     <label class="form-label">Upload book</label>
-                    {#                    <input type="file" class="form-control" id="fileform" name="sentFile">#}
-                    {#                    {{ form.isbn }}#}
                     {{ form.pdf }}
                 </div>
 
@@ -70,27 +78,6 @@
         </div>
         <span></span>
     </div>
-    {#    <div class="mt-3 mb-3 line-text"><span>OR</span></div>#}
-    {#    <p class="lead mt-5 ms-2">Upload a Book</p>#}
-    {#    <div class="container d-flex justify-content-start mb-5">#}
-    {#        <div class="card shadow-lg w-50">#}
-    {#            <form method="POST" class="form-inline" enctype="multipart/form-data">#}
-    {#                {% csrf_token %}#}
-    {#                <div class="card-header bg-secondary text-white form-label">Upload a pdf book</div>#}
-    {#                <div class="card-body mb-3">#}
-    {#                    <label class="form-label"></label>#}
-    {#                    <input type="file" class="form-control" id="fileform" name="sentFile">#}
-    {#                    {{ form.isbn }}#}
-    {#                    {{ form.pdf }}#}
-    {#                </div>#}
-    {##}
-    {#                <div class="card-body">#}
-    {#                    <button type="submit" value="upload" class="mt-2 btn button-class">Upload Book</button>#}
-    {#                </div>#}
-    {##}
-    {#            </form>#}
-    {#        </div>#}
-    {#    </div>#}
 
 
 {% endblock %}

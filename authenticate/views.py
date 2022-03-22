@@ -1,3 +1,5 @@
+import traceback
+
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -10,7 +12,8 @@ from home.helpers import *
 
 # Sign Up Page Controller:
 def register_page(request):
-    # Default Django User Creation Form
+    """Default Django User Creation Form"""
+
     form = UserCreationForm()
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -44,24 +47,36 @@ def login_page(request):
 
 # Login Page Controller
 def audible_login(request, asin=""):
+    context = {}
     if asin:
-        auth = audible.Authenticator.from_file("cred.txt")
-        client = audible.Client(auth=auth)
-        # download_book(auth=auth, client=client, asin=asin)
-        book_text = speech_to_text()
+        try:
+            auth = audible.Authenticator.from_file("cred.txt")
+            client = audible.Client(auth=auth)
+            # download_book(auth=auth, client=client, asin=asin)
+            book_text = speech_to_text()
 
-        words = remove_stopwords(book_text)
-        percentage = probability(words)
+            words = remove_stopwords(book_text)
+            percentage = probability(words)
+            context = {'user': request.user,
+                       'total_words': len(words),
+                       'percentage': float("{:.2f}".format(percentage))
+                       }
+        except Exception as ex:
+            messages.info(request, traceback.format_exc())
 
-        context = {'user': request.user,
-                   'total_words': len(words),
-                   'percentage': float("{:.2f}".format(percentage))}
         return render(request, 'home/book.html', context)
     else:
-        api = AudibleApi()
-        client = api.get_client()
-        library = api.get_library()
-        api.de_register()
+        library = None
+        try:
+            api = AudibleApi()
+            client = api.get_client()
+            library = api.get_library()
+            api.de_register()
+
+            messages.success(request, "Successfully Linked Audible Account")
+
+        except Exception as ex:
+            messages.info(request, traceback.format_exc())
 
         context = {'library': library['items']}
         return render(request, 'authenticate/audible.html', context)

@@ -11,6 +11,11 @@
             <div class="col-sm-6 col-lg-6">
                 <div class="card-body">
                     <h3 class="heading font-class mb-5 mt-3">Sign In</h3>
+                    {% for message in messages %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
                     <form method="POST" class="signin-form">
                         {% csrf_token %}
                         <div class="form-group mb-4">
@@ -29,9 +34,6 @@
                                 Sign In
                             </button>
                         </div>
-                        {% for message in messages %}
-                            <p style="color: red">{{ message }}</p>
-                        {% endfor %}
                         <div class="form-group d-md-flex mb-4">
                             <div>
                                 <a href="#" class="forgot-class mb-3">Forgot Password</a>
