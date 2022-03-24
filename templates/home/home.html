@@ -37,47 +37,51 @@
 
 {% block content %}
     {% for message in messages %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ message }}
-        </div>
+        {% if message.tags == "error" %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% else %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {% endif %}
+    {{ message }}
+    </div>
     {% endfor %}
-    {% if form.errors %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ form.errors }}
-        </div>
-    {% endif %}
-    <div class="jumbotron jumbotron-fluid mt-4">
-        <div class="container">
-            <h1 class="display-4 mb-5">Welcome Back <span class="yellow-class">{{ user }}</span></h1>
-            <p class="lead">Link Your Audible Account</p>
-        </div>
+{% if form.errors %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ form.errors }}
     </div>
-    <div class="container d-lg-flex justify-content-between">
-        <a class="card stretched-link shadow-lg w-25 text-decoration-none border-0" href="{% url 'audible_login' %}">
-
-            <img class="card-img-top" src="{% static 'images/audible.png' %}" alt="Card image cap">
-            <div class="card-footer"><h5 class="text-dark text-center blog-heading">
-                <img style="height: 25px; width: 25px" src="{% static 'images/link.png' %}" alt=""/>
-                Audible</h5></div>
-        </a>
-        <span class="border border-secondary opacity-25"></span>
-        <div class="card shadow-lg w-50">
-            <form method="POST" class="form-inline" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="card-header bg-dark text-white form-label">Upload a pdf book</div>
-                <div class="card-body mb-3">
-                    <label class="form-label">Upload book</label>
-                    {{ form.pdf }}
-                </div>
-
-                <div class="card-body">
-                    <button type="submit" value="upload" class="mt-2 btn button-class">Upload Book</button>
-                </div>
-
-            </form>
-        </div>
-        <span></span>
+{% endif %}
+<div class="jumbotron jumbotron-fluid mt-4">
+    <div class="container">
+        <h1 class="display-4 mb-5">Welcome Back <span class="yellow-class">{{ user }}</span></h1>
+        <p class="lead">Link Your Audible Account</p>
     </div>
+</div>
+<div class="container d-lg-flex justify-content-between">
+    <a class="card stretched-link shadow-lg w-25 text-decoration-none border-0" href="{% url 'audible_login' %}">
+
+        <img class="card-img-top" src="{% static 'images/audible.png' %}" alt="Card image cap">
+        <div class="card-footer"><h5 class="text-dark text-center blog-heading">
+            <img style="height: 25px; width: 25px" src="{% static 'images/link.png' %}" alt=""/>
+            Audible</h5></div>
+    </a>
+    <span class="border border-secondary opacity-25"></span>
+    <div class="card shadow-lg w-50">
+        <form method="POST" class="form-inline" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-header bg-dark text-white form-label">Upload a pdf book</div>
+            <div class="card-body mb-3">
+                <label class="form-label">Upload book</label>
+                {{ form.pdf }}
+            </div>
+
+            <div class="card-body">
+                <button type="submit" value="upload" class="mt-2 btn button-class">Upload Book</button>
+            </div>
+
+        </form>
+    </div>
+    <span></span>
+</div>
 
 
 {% endblock %}

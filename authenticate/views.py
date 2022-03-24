@@ -1,6 +1,7 @@
 import traceback
 
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -75,11 +76,11 @@ def audible_login(request, asin=""):
 
             messages.success(request, "Successfully Linked Audible Account")
 
+            context = {'library': library['items']}
+            return render(request, 'authenticate/audible.html', context)
         except Exception as ex:
-            messages.info(request, traceback.format_exc())
-
-        context = {'library': library['items']}
-        return render(request, 'authenticate/audible.html', context)
+            messages.error(request, "Failed to Login Audible")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 def page_not_found(request):
