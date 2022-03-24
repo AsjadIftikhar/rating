@@ -11,6 +11,7 @@ def pdf_to_string(file):
 
 
 def remove_stopwords(text):
+
     import nltk
     from nltk.corpus import stopwords
     from nltk.tokenize import word_tokenize
