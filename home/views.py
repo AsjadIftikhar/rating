@@ -48,6 +48,14 @@ def home(request):
         return render(request, 'home/home.html', context)
 
 
+def user_history(request):
+    return render(request, 'home/history.html', {'heading': "History"})
+
+
+def all_books(request):
+    return render(request, 'home/history.html', {'heading': "Library"})
+
+
 @authenticated_user
 def log_out(request):
     logout(request)
