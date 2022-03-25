@@ -2,6 +2,7 @@ import traceback
 
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
+from rest_framework.response import Response
 from authenticate.decorators import authenticated_user
 from django.contrib.auth import logout
 from django.contrib import messages
@@ -10,6 +11,7 @@ import io
 
 from .forms import BookForm
 from .helpers import *
+from .models import Books
 
 
 # Login Page Controller
@@ -47,6 +49,34 @@ def home(request):
                    'form': form}
         return render(request, 'home/home.html', context)
 
+
+@authenticated_user
+def user_history(request):
+    if request.method == 'GET':
+        current_user = request.user
+        if current_user.customerhistory.books.exists():
+            list_books = Books.objects.all()
+            context = {'heading': 'history',
+                       'user_all_books': list_books}
+            return render(request, 'home/home.html', context)
+
+
+
+@authenticated_user
+def all_books(request):
+    if request.method == 'GET':
+        list_books = Books.objects.all()
+        context = {'heading': 'history',
+                   'all_books': list_books}
+        return render(request, 'home/home.html', context)
+
+
+# get history list of books
+# history = Books.objects.all
+# .filter blank
+# request.user,
+
+# 1 user 1 hist
 
 @authenticated_user
 def log_out(request):

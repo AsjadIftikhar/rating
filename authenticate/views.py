@@ -9,8 +9,10 @@ from authenticate.audible_books import *
 from authenticate.speech_text import *
 from home.helpers import *
 
-
 # Sign Up Page Controller:
+from home.models import Books
+
+
 def register_page(request):
     """Default Django User Creation Form"""
 
@@ -50,19 +52,27 @@ def audible_login(request, asin=""):
     context = {}
     if asin:
         try:
-            auth = audible.Authenticator.from_file("cred.txt")
-            client = audible.Client(auth=auth)
-            # download_book(auth=auth, client=client, asin=asin)
-            book_text = speech_to_text()
-
-            words = remove_stopwords(book_text)
-            percentage = probability(words)
+            find_books = Books.objects.get(ASIN=asin)
             context = {'user': request.user,
-                       'total_words': len(words),
-                       'percentage': float("{:.2f}".format(percentage))
+                       'total_words': len(find_books.profane_words),
+                       'percentage': float("{:.2f}".format(find_books.profane_percentage))
                        }
-        except Exception as ex:
-            messages.info(request, traceback.format_exc())
+        except:
+
+            try:
+                auth = audible.Authenticator.from_file("cred.txt")
+                client = audible.Client(auth=auth)
+                # download_book(auth=auth, client=client, asin=asin)
+                book_text = speech_to_text()
+
+                words = remove_stopwords(book_text)
+                percentage = probability(words)
+                context = {'user': request.user,
+                           'total_words': len(words),
+                           'percentage': float("{:.2f}".format(percentage))
+                           }
+            except Exception as ex:
+                messages.info(request, traceback.format_exc())
 
         return render(request, 'home/book.html', context)
     else:
