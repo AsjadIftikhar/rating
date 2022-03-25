@@ -33,10 +33,10 @@ def home(request):
 
                 words = remove_stopwords(content)
                 percentage = probability(words)
-                messages.info(request, "Successful")
+                messages.success(request, "Successful")
                 # form.save()
             except Exception as ex:
-                messages.info(request, traceback.format_exc())
+                messages.error(request, "Something Went WRONG. Please Upload correct PDF File!")
 
         context = {'user': request.user,
                    'form': form,

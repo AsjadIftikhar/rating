@@ -1,46 +1,68 @@
-{% extends "home/home.html" %}
+{% extends "home/home_base.html" %}
 {% load static %}
 {% block title %}Book{% endblock %}
+
+{% block NAV_LINKS %}
+    <li class="nav-item">
+        <a class="forgot-class me-5" style="font-weight: bold" aria-current="page"
+           href="{% url 'home' %}">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="forgot-class me-5" aria-current="page" href="{% url 'history' %}">History</a>
+    </li>
+    <li class="nav-item">
+        <a class="forgot-class" aria-current="page" href="{% url 'library' %}">Library</a>
+    </li>
+{% endblock %}
+
+{% block BREADCRUMB %}
+    <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>
+    <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Book</li>
+{% endblock %}
 
 {% block content %}
 
     {% for message in messages %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ message }}
-        </div>
+        {% if message.tags == "error" %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% else %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {% endif %}
+    {{ message }}
+    </div>
     {% endfor %}
-    {% if form.errors %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ form.errors }}
+{% if form.errors %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ form.errors }}
+    </div>
+{% endif %}
+<h2 class="mt-4 mb-4 text-secondary">Information About Book</h2>
+<ol class="list-group list-group-numbered">
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">Words</div>
+            Number of Unique (excluding stopping words) in book
         </div>
-    {% endif %}
-    <h2 class="mt-4 mb-4 text-secondary">Information About Book</h2>
-    <ol class="list-group list-group-numbered">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Words</div>
-                Number of Unique (excluding stopping words) in book
-            </div>
-            <span class="badge bg-primary rounded-pill">{{ total_words }}</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Ratio</div>
-                Percentage of Profane Words in Book
-            </div>
-            <span class="badge bg-primary rounded-pill">{{ percentage }}%</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Rating</div>
-                Rating Computed by the System for the given Book
-            </div>
-            {% if percentage > 1.0 %}
-                <span class="text-danger">R rated</span>
-            {% else %}
-                <span class="text-success">PG-13</span>
-            {% endif %}
-        </li>
-    </ol>
+        <span class="badge bg-primary rounded-pill">{{ total_words }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">Ratio</div>
+            Percentage of Profane Words in Book
+        </div>
+        <span class="badge bg-primary rounded-pill">{{ percentage }}%</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">Rating</div>
+            Rating Computed by the System for the given Book
+        </div>
+        {% if percentage > 1.0 %}
+            <span class="text-danger">R rated</span>
+        {% else %}
+            <span class="text-success">PG-13</span>
+        {% endif %}
+    </li>
+</ol>
 
 {% endblock %}
