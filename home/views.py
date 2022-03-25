@@ -2,7 +2,6 @@ import traceback
 
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
-from rest_framework.response import Response
 from authenticate.decorators import authenticated_user
 from django.contrib.auth import logout
 from django.contrib import messages
@@ -11,7 +10,7 @@ import io
 
 from .forms import BookForm
 from .helpers import *
-from .models import Books
+from .models import *
 
 
 # Login Page Controller
@@ -52,31 +51,29 @@ def home(request):
 
 @authenticated_user
 def user_history(request):
+    context = {}
     if request.method == 'GET':
-        current_user = request.user
-        if current_user.customerhistory.books.exists():
-            list_books = Books.objects.all()
-            context = {'heading': 'history',
-                       'user_all_books': list_books}
-            return render(request, 'home/home.html', context)
+        (customer_history, created) = CustomerHistory.objects.get_or_create(
+            user=request.user)
+        if customer_history.books.exists():
+            list_books = Book.objects.all()
+            print(list_books)
+            for book in list_books:
+                print(book.ASIN)
+            context = {'heading': 'History',
+                       'all_books': list_books}
 
+        return render(request, 'home/history.html', context)
 
 
 @authenticated_user
 def all_books(request):
     if request.method == 'GET':
-        list_books = Books.objects.all()
-        context = {'heading': 'history',
+        list_books = Book.objects.all()
+        context = {'heading': 'Library',
                    'all_books': list_books}
-        return render(request, 'home/home.html', context)
+        return render(request, 'home/history.html', context)
 
-
-# get history list of books
-# history = Books.objects.all
-# .filter blank
-# request.user,
-
-# 1 user 1 hist
 
 @authenticated_user
 def log_out(request):

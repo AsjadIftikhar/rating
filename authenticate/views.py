@@ -11,7 +11,7 @@ from authenticate.speech_text import *
 from home.helpers import *
 
 # Sign Up Page Controller:
-from home.models import Books
+from home.models import Book
 
 
 def register_page(request):
@@ -53,7 +53,7 @@ def audible_login(request, asin=""):
     context = {}
     if asin:
         try:
-            find_books = Books.objects.get(ASIN=asin)
+            find_books = Book.objects.get(ASIN=asin)
             context = {'user': request.user,
                        'total_words': len(find_books.profane_words),
                        'percentage': float("{:.2f}".format(find_books.profane_percentage))

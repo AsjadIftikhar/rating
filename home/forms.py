@@ -1,11 +1,11 @@
 from django.forms import ModelForm, FileField, TextInput
 from isbn_field import ISBNField
-from home.models import Book
+from home.models import PDFBook
 
 
 class BookForm(ModelForm):
     class Meta:
-        model = Book
+        model = PDFBook
         fields = ['pdf']
 
         widgets = {
