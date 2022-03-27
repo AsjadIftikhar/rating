@@ -7,31 +7,38 @@
 {% endblock %}
 
 {% block BREADCRUMB %}
-    <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                     class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"></path>
-                </svg>
-            </li>
-            <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>
-            <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Audible</li>
-        </ol>
-    </nav>
+
+    <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>
+    <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Audible</li>
+
 {% endblock %}
 
 {% block content %}
 
-    <div>
-        <ul class="list-group list-group-number">
-            {% for lib in library %}
-                <li class="list-group-item">
-                    <a href="{% url 'audible_login' asin=lib.asin %}" class="btn btn-dark">Check Rating</a>
-                    {{ lib.title }}
-                </li>
-            {% endfor %}
-        </ul>
-
+    {% for message in messages %}
+        {% if message.tags == "error" %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% else %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {% endif %}
+    {{ message }}
     </div>
+    {% endfor %}
+{% if form.errors %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ form.errors }}
+    </div>
+{% endif %}
+<div>
+    <h2 class="mt-3 mb-3">Your Audible Books</h2>
+    <ul class="list-group list-group-number">
+        {% for lib in library %}
+            <li class="list-group-item">
+                <a href="{% url 'audible_login' asin=lib.asin %}" class="btn btn-warning mr-5">Check Rating</a>
+            {{ lib.title }}
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
 {% endblock %}

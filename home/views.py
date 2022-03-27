@@ -1,6 +1,7 @@
 import traceback
 
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from authenticate.decorators import authenticated_user
 from django.contrib.auth import logout
@@ -21,7 +22,6 @@ def home(request):
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
-
             try:
                 file = request.FILES['pdf'].read()
                 file = PyPDF2.PdfFileReader(io.BytesIO(file))
@@ -30,12 +30,16 @@ def home(request):
                     text = file.getPage(i)
                     content += text.extractText()
 
+                print(content)
                 words = remove_stopwords(content)
+                # words = content.split()
                 percentage = probability(words)
                 messages.success(request, "Successful")
                 # form.save()
             except Exception as ex:
                 messages.error(request, "Something Went WRONG. Please Upload correct PDF File!")
+                print(traceback.format_exc())
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         context = {'user': request.user,
                    'form': form,
@@ -57,9 +61,6 @@ def user_history(request):
             user=request.user)
         if customer_history.books.exists():
             list_books = Book.objects.all()
-            print(list_books)
-            for book in list_books:
-                print(book.ASIN)
             context = {'heading': 'History',
                        'all_books': list_books}
 
