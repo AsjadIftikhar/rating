@@ -35,6 +35,6 @@ def remove_stopwords(text):
 def probability(text_list):
     from profanity_check import predict, predict_prob
     probs = predict_prob(text_list)
-
-    words = [w for w in probs if w > 0.75]
+    print(probs)
+    words = [w for w in probs if w > 0.7]
     return (len(words) / len(probs)) * 100
