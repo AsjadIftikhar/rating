@@ -40,28 +40,25 @@
 <ol class="list-group list-group-numbered">
     <li class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
-            <div class="fw-bold">Words</div>
-            Number of Unique (excluding stopping words) in book
+            <div class="fw-bold">Sentences</div>
+            Number of Unique Sentences in book
         </div>
-        <span class="badge bg-primary rounded-pill">{{ total_words }}</span>
+        <h2><span class="badge bg-warning text-dark">{{ total_sentences }}</span></h2>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
             <div class="fw-bold">Ratio</div>
-            Percentage of Profane Words in Book
+            Percentage of Profane Sentences in Book
         </div>
-        <span class="badge bg-primary rounded-pill">{{ percentage }}%</span>
+        <h2><span class="badge bg-warning text-dark">{{ percentage }}%</span></h2>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">
             <div class="fw-bold">Rating</div>
             Rating Computed by the System for the given Book
         </div>
-        {% if percentage > 1.0 %}
-            <span class="text-danger">R rated</span>
-        {% else %}
-            <span class="text-success">PG-13</span>
-        {% endif %}
+        <h2><span class="badge bg-warning text-dark">{{ rating }}</span></h2>
+
     </li>
 </ol>
 

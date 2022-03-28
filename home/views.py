@@ -17,7 +17,7 @@ from .models import *
 # Login Page Controller
 @authenticated_user
 def home(request):
-    words = []
+    sentences = []
     percentage = 0.0
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
@@ -31,9 +31,9 @@ def home(request):
                     content += text.extractText()
 
                 print(content)
-                words = remove_stopwords(content)
-                # words = content.split()
-                percentage = probability(words)
+                # sentences = remove_stopwords(content)
+                sentences = content.split('.')
+                percentage, rating = probability(sentences)
                 messages.success(request, "Successful")
                 # form.save()
             except Exception as ex:
@@ -43,8 +43,9 @@ def home(request):
 
         context = {'user': request.user,
                    'form': form,
-                   'total_words': len(words),
-                   'percentage': float("{:.2f}".format(percentage))}
+                   'total_sentences': len(sentences),
+                   'percentage': float("{:.2f}".format(percentage)),
+                   'rating': rating}
         return render(request, 'home/book.html', context)
     else:
         form = BookForm()

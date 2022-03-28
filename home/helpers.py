@@ -11,7 +11,6 @@ def pdf_to_string(file):
 
 
 def remove_stopwords(text):
-
     import nltk
     from nltk.corpus import stopwords
     from nltk.tokenize import word_tokenize
@@ -35,6 +34,36 @@ def remove_stopwords(text):
 def probability(text_list):
     from profanity_check import predict, predict_prob
     probs = predict_prob(text_list)
-    print(probs)
-    words = [w for w in probs if w > 0.7]
-    return (len(words) / len(probs)) * 100
+
+    total_sentences = len(probs)
+
+    explicit_sentences = [w for w in probs if w > 0.975]
+    # context_sentences = [w for w in probs if 0.80 < w < 0.975]
+    # safe_sentences = [w for w in probs if w < 0.80]
+
+    percentage = len(explicit_sentences) / total_sentences * 100
+    rating = ""
+    if percentage < 0.16:
+        rating = "ALL"
+    elif 0.16 < percentage < 0.40:
+        rating = "PR"
+    elif 0.40 < percentage < 0.60:
+        rating = "R13"
+    elif 0.60 < percentage < 0.80:
+        rating = "RS"
+    elif percentage > 0.80:
+        rating = "RN"
+    return percentage, rating
+
+
+# G	ALL - All Readers - AR
+# PG	PR - Parents and Readers - PR
+# PG13	R13 - Readers Age 13 and up- R13
+# R	RS - Restricted for Adult Only - RS
+# NC17	RN - Not appropriate for Children - RN
+
+if __name__ == "__main__":
+    text = "what the fuck dude"
+    text_list = text.split()
+
+    print(probability(text_list))
