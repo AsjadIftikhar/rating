@@ -34,7 +34,7 @@
     <ul class="list-group list-group-number">
         {% for lib in library %}
             <li class="list-group-item">
-                <a href="{% url 'audible_login' asin=lib.asin %}" class="btn btn-warning mr-5">Check Rating</a>
+                <a href="{% url 'audible_login' asin=lib.asin title=lib.title %}" class="btn btn-warning mr-5">Check Rating</a>
             {{ lib.title }}
             </li>
         {% endfor %}
