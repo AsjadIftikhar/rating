@@ -60,10 +60,9 @@ def user_history(request):
     if request.method == 'GET':
         (customer_history, created) = CustomerHistory.objects.get_or_create(
             user=request.user)
-        if customer_history.books.exists():
-            list_books = Book.objects.all()
-            context = {'heading': 'History',
-                       'all_books': list_books}
+        list_books = customer_history.books.all()
+        context = {'heading': 'History',
+                   'all_books': list_books}
 
         return render(request, 'home/history.html', context)
 
