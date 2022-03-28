@@ -10,6 +10,7 @@ from authenticate.audible_books import *
 from authenticate.speech_text import *
 from home.helpers import *
 from home.models import *
+from authenticate.send_mail import *
 
 # Sign Up Page Controller:
 from home.models import Book
@@ -52,38 +53,48 @@ def login_page(request):
 # Login Page Controller
 def audible_login(request, asin="", title=""):
     context = {}
+    asin = asin[0:10]
+    print(asin)
+    print(title)
     if asin:
         try:
             find_books = Book.objects.get(ASIN=asin)
             (customer_history, created) = CustomerHistory.objects.get_or_create(
                 user=request.user)
-            customer_history.books.add(find_books)
-            #find_books.save()
+            find_books.customer_history.add(customer_history)
             context = {'user': request.user,
-                       'total_words': len(find_books.profane_words),
-                       'percentage': float("{:.2f}".format(find_books.profane_percentage))
+                       'total_sentences': find_books.total_words,
+                       'percentage': find_books.profane_percentage,
+                       'rating': find_books.rating
                        }
+
         except:
 
             try:
                 auth = audible.Authenticator.from_file("cred.txt")
                 client = audible.Client(auth=auth)
-                # download_book(auth=auth, client=client, asin=asin)
-                book_text = speech_to_text()
-
-                words = remove_stopwords(book_text)
-                percentage = probability(words)
+                download_book(auth=auth, client=client, asin=asin)
+                book_text = speech_to_text(asin)
 
                 (customer_history, created) = CustomerHistory.objects.get_or_create(
-                    user=request.user)
-                customer_history.books.add(find_books)
+                    user_id=request.user)
 
-                #save book
-                new_book = Book(ASIN=asin, title=title, rating="temp", customer_history=customer_history)
+                book_text_list = book_text.split('.')
+
+                percentage, rating = probability(book_text_list)
+
+                # save book
+                new_book = Book(ASIN=asin, title=title, rating=rating, total_words=len(book_text_list), profane_percentage=percentage)
                 new_book.save()
+                new_book.customer_history.add(customer_history)
+
+                # send email
+                sendMail("The requested rating for the book " + title + " is " + rating)
+
                 context = {'user': request.user,
-                           'total_words': len(words),
-                           'percentage': float("{:.2f}".format(percentage))
+                           'total_sentences': len(book_text_list),
+                           'percentage': float("{:.2f}".format(percentage)),
+                           'rating': rating
                            }
             except Exception as ex:
                 messages.info(request, traceback.format_exc())

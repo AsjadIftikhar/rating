@@ -52,7 +52,7 @@ def download_book(auth, client, asin):
 
     # for book in books["items"]:
     # asin = book["asin"]
-    title = f"( {asin}).aaxc"
+    title = f"{asin}.aaxc"
     lr = get_license_response(client, asin, quality="Extreme")
 
     if lr:

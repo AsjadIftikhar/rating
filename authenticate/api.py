@@ -4,8 +4,9 @@ import audible
 def custom_external_callback(captcha_url):
     from selenium import webdriver
     from webdriver_manager.chrome import ChromeDriverManager
+    from webdriver_manager.utils import ChromeType
 
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install())
 
     driver.get(captcha_url)
 
