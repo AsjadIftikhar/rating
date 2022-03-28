@@ -9,6 +9,7 @@ from authenticate.api import AudibleApi
 from authenticate.audible_books import *
 from authenticate.speech_text import *
 from home.helpers import *
+from home.models import *
 
 # Sign Up Page Controller:
 from home.models import Book
@@ -49,11 +50,15 @@ def login_page(request):
 
 
 # Login Page Controller
-def audible_login(request, asin=""):
+def audible_login(request, asin="", title=""):
     context = {}
     if asin:
         try:
             find_books = Book.objects.get(ASIN=asin)
+            (customer_history, created) = CustomerHistory.objects.get_or_create(
+                user=request.user)
+            customer_history.books.add(find_books)
+            #find_books.save()
             context = {'user': request.user,
                        'total_words': len(find_books.profane_words),
                        'percentage': float("{:.2f}".format(find_books.profane_percentage))
@@ -68,6 +73,14 @@ def audible_login(request, asin=""):
 
                 words = remove_stopwords(book_text)
                 percentage = probability(words)
+
+                (customer_history, created) = CustomerHistory.objects.get_or_create(
+                    user=request.user)
+                customer_history.books.add(find_books)
+
+                #save book
+                new_book = Book(ASIN=asin, title=title, rating="temp", customer_history=customer_history)
+                new_book.save()
                 context = {'user': request.user,
                            'total_words': len(words),
                            'percentage': float("{:.2f}".format(percentage))
@@ -87,6 +100,7 @@ def audible_login(request, asin=""):
             messages.success(request, "Successfully Linked Audible Account")
 
             context = {'library': library['items']}
+            print(library['items'])
             return render(request, 'authenticate/audible.html', context)
         except Exception as ex:
             messages.error(request, "Failed to Login Audible")
