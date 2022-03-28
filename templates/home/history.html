@@ -25,7 +25,7 @@
 {% endblock %}
 
 {% block BREADCRUMB %}
-     <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>
+    <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>
     <li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">{{ heading }}</li>
 {% endblock %}
 
@@ -58,16 +58,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            {% for book in all_books %}
+        {% for book in all_books %}
+            <tr>
+
                 <th scope="row">{{ book.ASIN }}</th>
                 <td>{{ book.title }}</td>
                 <td>{{ book.total_words }}</td>
                 <td>{{ book.profane_percentage }}</td>
                 <td>{{ book.rating }}</td>
-            {% endfor %}
-
-        </tr>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
