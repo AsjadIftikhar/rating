@@ -53,7 +53,7 @@
             <th scope="col">Asin #</th>
             <th scope="col">Title</th>
             <th scope="col">No. of words</th>
-            <th scope="col">Percentage of Profane Words</th>
+            <th scope="col">Percentage of Explicit Sentences</th>
             <th scope="col">Rating</th>
         </tr>
         </thead>
@@ -63,7 +63,7 @@
                 <th scope="row">{{ book.ASIN }}</th>
                 <td>{{ book.title }}</td>
                 <td>{{ book.total_words }}</td>
-                <td>{{ book.profane_percentage }}</td>
+                <td>{{ book.profane_percentage }}%</td>
                 <td>{{ book.rating }}</td>
             {% endfor %}
 

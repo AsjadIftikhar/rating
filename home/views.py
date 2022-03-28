@@ -56,7 +56,7 @@ def home(request):
 
 @authenticated_user
 def user_history(request):
-    context = {}
+    context = {'heading': 'History'}
     if request.method == 'GET':
         (customer_history, created) = CustomerHistory.objects.get_or_create(
             user=request.user)
