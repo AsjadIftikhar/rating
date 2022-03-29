@@ -53,9 +53,9 @@ def login_page(request):
 # Login Page Controller
 def audible_login(request, asin="", title=""):
     context = {}
-    asin = asin[0:10]
-    print(asin)
-    print(title)
+    # asin = asin[0:10]
+    # print(asin)
+    # print(title)
     if asin:
         try:
             find_books = Book.objects.get(ASIN=asin)
