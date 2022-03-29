@@ -1,7 +1,9 @@
 import smtplib
 from email.message import EmailMessage
-EMAIL_ID ="palindrome.innovations@gmail.com"
-EMAIL_PASSWORD="Black966!!!"
+
+EMAIL_ID = "palindrome.innovations@gmail.com"
+EMAIL_PASSWORD = "Black966!!!"
+
 
 def sendMail(errorMessage):
     msg = EmailMessage()
