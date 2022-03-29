@@ -19,6 +19,9 @@ from .models import *
 def home(request):
     sentences = []
     percentage = 0.0
+
+    print(request.user.email)
+
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
@@ -48,6 +51,7 @@ def home(request):
                    'rating': rating}
         return render(request, 'home/book.html', context)
     else:
+
         form = BookForm()
         context = {'user': request.user,
                    'form': form}

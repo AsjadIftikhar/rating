@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from authenticate.api import AudibleApi
 from authenticate.audible_books import *
+from authenticate.forms import RegistrationForm
 from authenticate.speech_text import *
 from home.helpers import *
 from home.models import *
@@ -19,9 +20,11 @@ from home.models import Book
 def register_page(request):
     """Default Django User Creation Form"""
 
-    form = UserCreationForm()
+    # form = UserCreationForm()
+    form = RegistrationForm()
+
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
 
@@ -84,7 +87,8 @@ def audible_login(request, asin="", title=""):
                 percentage, rating = probability(book_text_list)
 
                 # save book
-                new_book = Book(ASIN=asin, title=title, rating=rating, total_words=len(book_text_list), profane_percentage=percentage)
+                new_book = Book(ASIN=asin, title=title, rating=rating, total_words=len(book_text_list),
+                                profane_percentage=percentage)
                 new_book.save()
                 new_book.customer_history.add(customer_history)
 
