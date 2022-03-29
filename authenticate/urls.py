@@ -10,7 +10,7 @@ urlpatterns = [
     path('404/', page_not_found, name="404"),
     path('logout/', log_out, name="logout"),
     path('audible-login/', audible_login, name='audible_login'),
-    path('audible-login/<str:asin> <str:title>', audible_login, name='audible_login'),
+    path('audible-login/<str:asin>/<str:title>', audible_login, name='audible_login'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
