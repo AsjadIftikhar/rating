@@ -80,7 +80,7 @@ def audible_login(request, asin="", title=""):
                 book_text = speech_to_text(asin)
 
                 (customer_history, created) = CustomerHistory.objects.get_or_create(
-                    user_id=request.user)
+                    user=request.user)
 
                 book_text_list = book_text.split('.')
 
@@ -93,7 +93,7 @@ def audible_login(request, asin="", title=""):
                 new_book.customer_history.add(customer_history)
 
                 # send email
-                sendMail("The requested rating for the book " + title + " is " + rating)
+                sendMail(request.user.email, "The requested rating for the book " + title + " is " + rating)
 
                 context = {'user': request.user,
                            'total_sentences': len(book_text_list),
