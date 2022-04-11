@@ -71,13 +71,13 @@ def user_history(request):
         return render(request, 'home/history.html', context)
 
 
-@authenticated_user
-def all_books(request):
-    if request.method == 'GET':
-        list_books = Book.objects.all()
-        context = {'heading': 'Library',
-                   'all_books': list_books}
-        return render(request, 'home/history.html', context)
+# @authenticated_user
+# def all_books(request):
+#     if request.method == 'GET':
+#         list_books = Book.objects.all()
+#         context = {'heading': 'Library',
+#                    'all_books': list_books}
+#         return render(request, 'home/history.html', context)
 
 
 @authenticated_user

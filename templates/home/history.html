@@ -11,16 +11,16 @@
         <li class="nav-item">
             <a class="forgot-class me-5" style="font-weight: bold" aria-current="page" href="{% url 'history' %}">History</a>
         </li>
-        <li class="nav-item">
-            <a class="forgot-class" aria-current="page" href="{% url 'library' %}">Library</a>
-        </li>
+{#        <li class="nav-item">#}
+{#            <a class="forgot-class" aria-current="page" href="{% url 'library' %}">Library</a>#}
+{#        </li>#}
     {% else %}
         <li class="nav-item">
             <a class="forgot-class me-5" aria-current="page" href="{% url 'history' %}">History</a>
         </li>
-        <li class="nav-item">
-            <a class="forgot-class" style="font-weight: bold" aria-current="page" href="{% url 'library' %}">Library</a>
-        </li>
+{#        <li class="nav-item">#}
+{#            <a class="forgot-class" style="font-weight: bold" aria-current="page" href="{% url 'library' %}">Library</a>#}
+{#        </li>#}
     {% endif %}
 {% endblock %}
 
@@ -47,29 +47,51 @@
 
     <h2 class="mt-4 mb-4 text-secondary">{{ heading }}</h2>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Asin #</th>
-            <th scope="col">Title</th>
-            <th scope="col">No. of words</th>
-            <th scope="col">Percentage of Explicit Sentences</th>
-            <th scope="col">Rating</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for book in all_books %}
-            <tr>
+    <div class="container">
+        <div class="row row-cols-4">
+            {% for book in all_books %}
+                <div class="col mb-4">
+                    <div class="card shadow-lg ">
+                        <img src="{% static 'images/thumbnail.svg' %}" style="border: 2px #FBAB7E solid" alt="...">
+                        <div class="card-footer" style="background-color: #3b4252;">
+                            <h4 class="card-title text-light">{{ book.title }}</h4>
+                            <p class="card-title text-light">ASIN# {{ book.ASIN }}</p>
+                            <hr class="bg-light"/>
+                            <h2 class="text-center yellow-class">{{ book.rating }}</h2>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-                <th scope="row">{{ book.ASIN }}</th>
-                <td>{{ book.title }}</td>
-                <td>{{ book.total_words }}</td>
-                <td>{{ book.profane_percentage }}%</td>
-                <td>{{ book.rating }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {##}
+    {#    <table class="table">#}
+    {#        <thead>#}
+    {#        <tr>#}
+    {#            <th scope="col">Asin #</th>#}
+    {#            <th scope="col">Title</th>#}
+    {#            <th scope="col">No. of words</th>#}
+    {#            <th scope="col">Percentage of Explicit Sentences</th>#}
+    {#            <th scope="col">Rating</th>#}
+    {#        </tr>#}
+    {#        </thead>#}
+    {#        <tbody>#}
+    {#        {% for book in all_books %}#}
+    {#            <tr>#}
+    {##}
+    {#                <th scope="row"></th>#}
+    {#                <td></td>#}
+    {#                <td>{{ book.total_words }}</td>#}
+    {#                <td>{{ book.profane_percentage }}%</td>#}
+    {#                <td></td>#}
+    {#            </tr>#}
+    {#        {% endfor %}#}
+    {#        </tbody>#}
+    {#    </table>#}
 
 
 {% endblock %}
+
+
+
