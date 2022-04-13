@@ -10,9 +10,9 @@
     <li class="nav-item">
         <a class="forgot-class me-5" aria-current="page" href="{% url 'history' %}">History</a>
     </li>
-{#    <li class="nav-item">#}
-{#        <a class="forgot-class" aria-current="page" href="{% url 'library' %}">Library</a>#}
-{#    </li>#}
+    {#    <li class="nav-item">#}
+    {#        <a class="forgot-class" aria-current="page" href="{% url 'library' %}">Library</a>#}
+    {#    </li>#}
 {% endblock %}
 
 {% block BREADCRUMB %}
@@ -37,29 +37,50 @@
     </div>
 {% endif %}
 <h2 class="mt-4 mb-4 text-secondary">Information About Book</h2>
-<ol class="list-group list-group-numbered">
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Sentences</div>
-            Number of Unique Sentences in book
-        </div>
-        <h2><span class="badge bg-warning text-dark">{{ total_sentences }}</span></h2>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Ratio</div>
-            Percentage of Explicit Sentences in Book
-        </div>
-        <h2><span class="badge bg-warning text-dark">{{ percentage }}%</span></h2>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-            <div class="fw-bold">Rating</div>
-            Rating Computed by the System for the given Book
-        </div>
-        <h2><span class="badge bg-warning text-dark">{{ rating }}</span></h2>
 
-    </li>
-</ol>
+<div class="container">
+    <div class="row row-cols-4">
+            <div class="col mb-4">
+                <div class="card shadow-lg ">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="yellow-class m-5 align-items-center">Rating</h5>
+                        </div>
+                        <div class="col-4">
+                            <img src="{% static 'images/book.svg' %}" width="100" height="100" alt="">
+                        </div>
+
+                    </div>
+                    <hr class="ms-2 w-75"/>
+                    <h2 class="text-center font-class heading">{{ rating }}</h2>
+                </div>
+            </div>
+    </div>
+</div>
+
+{#<ol class="list-group list-group-numbered">#}
+{#    <li class="list-group-item d-flex justify-content-between align-items-start">#}
+{#        <div class="ms-2 me-auto">#}
+{#            <div class="fw-bold">Sentences</div>#}
+{#            Number of Unique Sentences in book#}
+{#        </div>#}
+{#        <h2><span class="badge bg-warning text-dark">{{ total_sentences }}</span></h2>#}
+{#    </li>#}
+{#    <li class="list-group-item d-flex justify-content-between align-items-start">#}
+{#        <div class="ms-2 me-auto">#}
+{#            <div class="fw-bold">Ratio</div>#}
+{#            Percentage of Explicit Sentences in Book#}
+{#        </div>#}
+{#        <h2><span class="badge bg-warning text-dark">{{ percentage }}%</span></h2>#}
+{#    </li>#}
+{#    <li class="list-group-item d-flex justify-content-between align-items-start">#}
+{#        <div class="ms-2 me-auto">#}
+{#            <div class="fw-bold">Rating</div>#}
+{#            Rating Computed by the System for the given Book#}
+{#        </div>#}
+{#        <h2><span class="badge bg-warning text-dark">{{ rating }}</span></h2>#}
+{##}
+{#    </li>#}
+{#</ol>#}
 
 {% endblock %}

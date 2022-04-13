@@ -17,6 +17,11 @@ def custom_external_callback(captcha_url):
     while driver.current_url == url:
         pass
 
+    # url = driver.current_url
+    #
+    # while driver.current_url == url:
+    #     pass
+
     return driver.current_url
 
 
