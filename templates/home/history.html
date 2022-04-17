@@ -4,24 +4,30 @@
 
 {% block NAV_LINKS %}
     <li class="nav-item">
-        <a class="forgot-class me-5" aria-current="page"
-           href="{% url 'home' %}">Home</a>
+        <a class="forgot-class me-5" aria-current="page" style="font-weight: bold"
+           href="{% url 'home_or_history' %}">Home</a>
     </li>
-    {% if 'History' in heading %}
-        <li class="nav-item">
-            <a class="forgot-class me-5" style="font-weight: bold" aria-current="page" href="{% url 'history' %}">History</a>
-        </li>
-        {#        <li class="nav-item">#}
-        {#            <a class="forgot-class" aria-current="page" href="{% url 'library' %}">Library</a>#}
-        {#        </li>#}
-    {% else %}
-        <li class="nav-item">
-            <a class="forgot-class me-5" aria-current="page" href="{% url 'history' %}">History</a>
-        </li>
-        {#        <li class="nav-item">#}
-        {#            <a class="forgot-class" style="font-weight: bold" aria-current="page" href="{% url 'library' %}">Library</a>#}
-        {#        </li>#}
-    {% endif %}
+{#    <li class="nav-item">#}
+{#        <a class="forgot-class me-5" style="font-weight: bold" aria-current="page" href="{% url 'history' %}">History</a>#}
+{#    </li>#}
+    <li class="nav-item">
+        <a class="forgot-class" aria-current="page" href="{% url 'home' %}">Link Account | PDF</a>
+    </li>
+{#    {% if 'History' in heading %}#}
+    {#        <li class="nav-item">#}
+    {#            <a class="forgot-class me-5" style="font-weight: bold" aria-current="page" href="{% url 'history' %}">History</a>#}
+    {#        </li>#}
+    {#        <li class="nav-item">#}
+    {#            <a class="forgot-class" aria-current="page" href="{% url 'home' %}">Link Account | PDF</a>#}
+    {#        </li>#}
+    {#    {% else %}#}
+    {#        <li class="nav-item">#}
+    {#            <a class="forgot-class me-5" aria-current="page" href="{% url 'history' %}">History</a>#}
+    {#        </li>#}
+    {#        <li class="nav-item">#}
+    {#            <a class="forgot-class" aria-current="page" href="{% url 'home' %}">Link Account | PDF</a>#}
+    {#        </li>#}
+    {#    {% endif %}#}
 {% endblock %}
 
 {% block BREADCRUMB %}

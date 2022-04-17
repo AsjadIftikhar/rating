@@ -3,9 +3,9 @@ from home.views import *
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', home, name='home'),
+    path('', home_or_history, name='home_or_history'),
     path('history', user_history, name='history'),
-    # path('library', all_books, name='library'),
+    path('link', home, name='home'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

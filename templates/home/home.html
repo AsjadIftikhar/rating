@@ -4,15 +4,15 @@
 
 {% block NAV_LINKS %}
     <li class="nav-item">
-        <a class="forgot-class me-5" style="font-weight: bold" aria-current="page"
-           href="{% url 'home' %}">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="forgot-class me-5" aria-current="page" href="{% url 'history' %}">History</a>
+        <a class="forgot-class me-5" aria-current="page"
+           href="{% url 'home_or_history' %}">Home</a>
     </li>
 {#    <li class="nav-item">#}
-{#        <a class="forgot-class" aria-current="page" href="{% url 'library' %}">Library</a>#}
+{#        <a class="forgot-class me-5" aria-current="page" href="{% url 'history' %}">History</a>#}
 {#    </li>#}
+    <li class="nav-item">
+        <a class="forgot-class" style="font-weight: bold" aria-current="page" href="{% url 'home' %}">Link Account | PDF</a>
+    </li>
 {% endblock %}
 
 {% block BREADCRUMB %}<li class="breadcrumb-item active pt-1" style="color: #FBAB7E;" aria-current="page">Home</li>{% endblock %}
