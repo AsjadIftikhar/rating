@@ -3,7 +3,6 @@ import traceback
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from authenticate.api import AudibleApi
 from authenticate.audible_books import *
@@ -13,7 +12,6 @@ from home.helpers import *
 from home.models import *
 from authenticate.send_mail import *
 
-# Sign Up Page Controller:
 from home.models import Book
 
 
@@ -56,9 +54,6 @@ def login_page(request):
 # Login Page Controller
 def audible_login(request, asin="", title=""):
     context = {}
-    # asin = asin[0:10]
-    # print(asin)
-    # print(title)
     if asin:
         try:
             find_books = Book.objects.get(ASIN=asin)

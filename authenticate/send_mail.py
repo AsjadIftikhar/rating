@@ -1,11 +1,10 @@
 import smtplib
 from email.message import EmailMessage
 
-EMAIL_ID = "palindrome.innovations@gmail.com"
-EMAIL_PASSWORD = "Black966!!!"
-
 
 def sendMail(receiver_email, errorMessage):
+    from MailCreds import EMAIL_ID, EMAIL_PASSWORD
+
     msg = EmailMessage()
     msg.set_content(errorMessage)
 

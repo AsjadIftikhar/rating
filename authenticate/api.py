@@ -10,17 +10,8 @@ def custom_external_callback(captcha_url):
 
     driver.get(captcha_url)
 
-    while driver.current_url == captcha_url:
+    while "openid.oa2.authorization_code=" not in driver.current_url:
         pass
-    url = driver.current_url
-
-    while driver.current_url == url:
-        pass
-
-    # url = driver.current_url
-    #
-    # while driver.current_url == url:
-    #     pass
 
     return driver.current_url
 
