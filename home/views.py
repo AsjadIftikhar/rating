@@ -16,37 +16,6 @@ from .models import *
 # Login Page Controller
 @authenticated_user
 def home_or_history(request):
-    # sentences = []
-    # percentage = 0.0
-    #
-    # if request.method == 'POST':
-    #     form = BookForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         try:
-    #             file = request.FILES['pdf'].read()
-    #             file = PyPDF2.PdfFileReader(io.BytesIO(file))
-    #             content = ""
-    #             for i in range(file.numPages):
-    #                 text = file.getPage(i)
-    #                 content += text.extractText()
-    #
-    #             sentences = content.split('.')
-    #             percentage, rating = probability(sentences)
-    #             messages.success(request, "Successful")
-    #
-    #         except Exception as ex:
-    #             messages.error(request, "Something Went WRONG. Please Upload correct PDF File!")
-    #             print(traceback.format_exc())
-    #             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    #
-    #     context = {'user': request.user,
-    #                'form': form,
-    #                'total_sentences': len(sentences),
-    #                'percentage': float("{:.2f}".format(percentage)),
-    #                'rating': rating}
-    #     return render(request, 'home/book.html', context)
-    # else:
-
     (customer_history, created) = CustomerHistory.objects.get_or_create(
         user=request.user)
     list_books = customer_history.books.all()
@@ -56,10 +25,7 @@ def home_or_history(request):
 
         return render(request, 'home/history.html', context)
     else:
-        form = BookForm()
-        context = {'user': request.user,
-                   'form': form}
-        return render(request, 'home/home.html', context)
+        return redirect(home)
 
 
 @authenticated_user

@@ -113,6 +113,7 @@ def audible_login(request, asin="", title=""):
             print(library['items'])
             return render(request, 'authenticate/audible.html', context)
         except Exception as ex:
+            print(traceback.format_exc())
             messages.error(request, "Failed to Login Audible")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
